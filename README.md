@@ -107,8 +107,6 @@ Setelah dilakukan normalisasi data dibagi menjadi 3 tabel terpisah, agar memenuh
 | CRUD Guru           | Kelola guru pengajar             |
 | CRUD Mata Pelajaran | Terhubung dengan data guru       |
 | Enrollment          | Relasi dinamis siswa — pelajaran |
-| Pencarian Cepat     | Live search pada setiap list     |
-| UI Modern           | User-friendly dashboard          |
 
 ---
 
