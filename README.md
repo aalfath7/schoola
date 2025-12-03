@@ -1,10 +1,32 @@
-## Apa itu Normalisasi Basis Data?
+# 🎓 Schoola — School Management System
 
-Normalisasi basis data adalah proses menyusun struktur tabel dalam basis data relational untuk mengurangi `redundansi` data (pengulangan) dan meningkatkan `integritas` data (data lebih konsisten dan rapi).
+Schoola adalah aplikasi **manajemen data sekolah** yang membantu dalam mengelola:
+
+- 👨‍🎓 Data Siswa
+- 👩‍🏫 Data Guru
+- 📘 Data Mata Pelajaran
+- 🔗 Enrollment (relasi siswa ke pelajaran)
 
 ---
 
-## Contoh Tabel yang Belum Dinormalisasi (UNF, unnormalized form)
+## 🛠️ Tech Stack
+
+| Layer    | Technology          |
+| -------- | ------------------- |
+| Frontend | Vue.js              |
+| Backend  | Strapi Headless CMS |
+| Database | MySQL               |
+| Styling  | Tailwind CSS        |
+
+---
+
+## 📊 Apa itu Normalisasi Basis Data?
+
+Normalisasi basis data adalah proses menyusun struktur tabel dalam basis data relational untuk mengurangi **redundansi** data (pengulangan) dan meningkatkan **integritas** data (data lebih konsisten dan rapi).
+
+---
+
+## 📋 Contoh Tabel yang Belum Dinormalisasi (UNF, unnormalized form)
 
 Data pada satu tabel memiliki banyak nilai dalam satu kolom:
 
@@ -15,40 +37,44 @@ Data pada satu tabel memiliki banyak nilai dalam satu kolom:
 
 ---
 
-Proses normalisasi terdiri dari beberapa tahap, yaitu : `1NF`, `2NF`, dan `3NF`.
+## 📈 Proses Normalisasi
 
-#### 1NF (First Normal Form)
+Proses normalisasi terdiri dari beberapa tahap, yaitu : **1NF**, **2NF**, dan **3NF**.
 
-- Kolom harus bernilai **atomik**.
-- Tidak boleh ada **repeating group** / **pengulangan kolom sejenis**.
+### 1NF (First Normal Form)
 
-#### 2NF (Second Normal Form)
+- Kolom harus bernilai **atomik**
+- Tidak boleh ada **repeating group** / pengulangan kolom sejenis
+
+### 2NF (Second Normal Form)
 
 - Sudah memenuhi 1NF
 - Setiap kolom non-primary key harus bergantung **sepenuhnya** pada primary key (tidak hanya sebagian)
 
-#### 3NF (Third Normal Form)
+### 3NF (Third Normal Form)
 
 - Sudah memenuhi 2NF
 - Tidak ada **transitive dependency** (kolom non-primary tidak boleh bergantung pada kolom non-primary lain)
 
-## Tabel yang Sudah Dinormalisasi
+---
 
-#### Tabel `teacher`
+## 🗃️ Tabel yang Sudah Dinormalisasi
+
+### Tabel `teacher`
 
 | id  | teacher_name |
 | --- | ------------ |
 | 1   | John         |
 | 2   | Jordi        |
 
-#### Tabel `lesson`
+### Tabel `lesson`
 
 | id  | lesson_name | teacher_id |
 | --- | ----------- | ---------- |
 | 1   | Math        | 1          |
 | 2   | Science     | 2          |
 
-#### Tabel `student`
+### Tabel `student`
 
 | id  | student_name | nisn |
 | --- | ------------ | ---- |
@@ -56,7 +82,7 @@ Proses normalisasi terdiri dari beberapa tahap, yaitu : `1NF`, `2NF`, dan `3NF`.
 | 2   | Johan        | 002  |
 | 3   | Putri        | 003  |
 
-#### Tabel `student_lesson`
+### Tabel `student_lesson`
 
 | id  | student_id | lesson_id |
 | --- | ---------- | --------- |
@@ -66,14 +92,27 @@ Proses normalisasi terdiri dari beberapa tahap, yaitu : `1NF`, `2NF`, dan `3NF`.
 
 Setelah dilakukan normalisasi data dibagi menjadi 3 tabel terpisah, agar memenuhi aturan normalisasi:
 
-- Setiap kolom bernilai atomik.
-- Tidak ada pengulangan kolom sejenis.
-- Setiap kolom non-primary key bergantung sepenuhnya pada primary key.
-- Tidak ada transitive dependency antar kolom non-primary.
+- Setiap kolom bernilai atomik
+- Tidak ada pengulangan kolom sejenis
+- Setiap kolom non-primary key bergantung sepenuhnya pada primary key
+- Tidak ada transitive dependency antar kolom non-primary
 
 ---
 
-\*catatan : ada penyesuaian pada implementasi karena menggunakan strapi. Yaitu pada tabel student_lesson, kolom diubah menjadi id, student, dan lesson.
+## ✨ Key Features
+
+| Fitur               | Keterangan                       |
+| ------------------- | -------------------------------- |
+| CRUD Siswa          | Tambah, edit, hapus data siswa   |
+| CRUD Guru           | Kelola guru pengajar             |
+| CRUD Mata Pelajaran | Terhubung dengan data guru       |
+| Enrollment          | Relasi dinamis siswa — pelajaran |
+| Pencarian Cepat     | Live search pada setiap list     |
+| UI Modern           | User-friendly dashboard          |
+
+---
+
+## 🚀 Installation & Setup
 
 ## Instalasi Aplikasi – Vue.js + Strapi
 
@@ -98,7 +137,7 @@ https://github.com/aalfath7/test_app.git
 cd test_app
 ```
 
-### 1. Persiapan Basis Data
+### 2. Persiapan Basis Data
 
 Jalankan MySQL server (misalnya menggunakan XAMPP).
 
@@ -106,7 +145,7 @@ Buat basis data baru dengan nama `school_db` di MySQL.
 
 Import file `school_db.sql` di folder backend ke dalam basis data tersebut.
 
-### 2. Install & Run Backend (Strapi)
+### 3. Install & Run Backend (Strapi)
 
 ```
 cd backend
@@ -142,7 +181,7 @@ Buat akun admin terlebih dahulu.
 
 Setelah itu, akan masuk ke dashboard Strapi.
 
-### 3. Install & Run Frontend (Vue.js)
+### 4. Install & Run Frontend (Vue.js)
 
 buka terminal baru
 
@@ -170,4 +209,6 @@ http://localhost:5173
 
 Login menggunakan username : `tes` dan password : `123456`.
 
-Atau buat user baru di dashboard Strapi.
+atau buat user baru di dashboard Strapi.
+
+---

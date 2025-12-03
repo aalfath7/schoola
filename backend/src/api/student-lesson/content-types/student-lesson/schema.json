@@ -7,21 +7,21 @@
     "displayName": "student_lesson"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "student": {
+    "students": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::student.student",
-      "inversedBy": "student_lessons"
+      "mappedBy": "student_lessons"
     },
-    "lesson": {
+    "lessons": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::lesson.lesson",
-      "inversedBy": "student_lessons"
+      "mappedBy": "student_lessons"
     }
   }
 }

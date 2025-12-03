@@ -2,14 +2,37 @@
   <div class="max-w-6xl mx-auto p-6 space-y-8">
     <div class="flex justify-between items-center">
       <div>
-        <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
+        <h1 class="text-3xl font-bold text-gray-800">Dashboard Schoola</h1>
       </div>
-      <button
-        @click="logout"
-        class="flex items-center gap-2 text-sm bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md cursor-pointer"
-      >
-        Logout
-      </button>
+
+      <div class="flex space-x-2">
+        <router-link
+          to="/data-master"
+          class="flex items-center gap-2 text-sm bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg shadow-md cursor-pointer transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+            />
+          </svg>
+          Data Master
+        </router-link>
+        <button
+          @click="logout"
+          class="flex items-center gap-2 text-sm bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md cursor-pointer"
+        >
+          Logout
+        </button>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -204,7 +227,7 @@ const fetchData = async () => {
 
   try {
     const studentLessonRes = await axios.get(
-      "http://localhost:1337/api/student-lessons?populate=student",
+      "http://localhost:1337/api/student-lessons?populate=students",
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -213,7 +236,7 @@ const fetchData = async () => {
     const studentLessonData = studentLessonRes.data.data;
     const studentMap = {};
     studentLessonData.forEach((item) => {
-      const studentName = item.student.student_name || "Unknown";
+      const studentName = item.students[0].student_name || "Unknown";
       studentMap[studentName] = (studentMap[studentName] || 0) + 1;
     });
 

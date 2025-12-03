@@ -7,16 +7,16 @@
     "displayName": "teacher"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "teacher_name": {
       "type": "string"
     },
-    "lesson": {
+    "lessons": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::lesson.lesson",
       "mappedBy": "teacher"
     }

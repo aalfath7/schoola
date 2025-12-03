@@ -7,7 +7,7 @@
     "displayName": "lesson"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -16,15 +16,15 @@
     },
     "teacher": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::teacher.teacher",
-      "inversedBy": "lesson"
+      "inversedBy": "lessons"
     },
     "student_lessons": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::student-lesson.student-lesson",
-      "mappedBy": "lesson"
+      "inversedBy": "lessons"
     }
   }
 }

@@ -4,7 +4,7 @@
       class="bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-xl w-full max-w-sm border border-white/20"
     >
       <div class="flex flex-col items-center mb-8">
-        <h1 class="text-2xl font-bold text-gray-800">Selamat Datang</h1>
+        <h1 class="text-2xl font-bold text-gray-800">Schoola Apps</h1>
         <p class="text-gray-500 text-sm mt-1">Login ke Aplikasi</p>
       </div>
 

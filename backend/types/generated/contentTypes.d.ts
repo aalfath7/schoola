@@ -381,7 +381,7 @@ export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
     singularName: 'lesson';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -396,10 +396,10 @@ export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     student_lessons: Schema.Attribute.Relation<
-      'oneToMany',
+      'manyToMany',
       'api::student-lesson.student-lesson'
     >;
-    teacher: Schema.Attribute.Relation<'oneToOne', 'api::teacher.teacher'>;
+    teacher: Schema.Attribute.Relation<'manyToOne', 'api::teacher.teacher'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -415,13 +415,13 @@ export interface ApiStudentLessonStudentLesson
     singularName: 'student-lesson';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    lesson: Schema.Attribute.Relation<'manyToOne', 'api::lesson.lesson'>;
+    lessons: Schema.Attribute.Relation<'manyToMany', 'api::lesson.lesson'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -429,7 +429,7 @@ export interface ApiStudentLessonStudentLesson
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    student: Schema.Attribute.Relation<'manyToOne', 'api::student.student'>;
+    students: Schema.Attribute.Relation<'manyToMany', 'api::student.student'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -444,7 +444,7 @@ export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
     singularName: 'student';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -459,7 +459,7 @@ export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
     nisn: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     student_lessons: Schema.Attribute.Relation<
-      'oneToMany',
+      'manyToMany',
       'api::student-lesson.student-lesson'
     >;
     student_name: Schema.Attribute.String;
@@ -477,13 +477,13 @@ export interface ApiTeacherTeacher extends Struct.CollectionTypeSchema {
     singularName: 'teacher';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    lesson: Schema.Attribute.Relation<'oneToOne', 'api::lesson.lesson'>;
+    lessons: Schema.Attribute.Relation<'oneToMany', 'api::lesson.lesson'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
