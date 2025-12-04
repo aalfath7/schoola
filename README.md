@@ -131,8 +131,8 @@ Repositori ini berisi dua bagian utama:
 ### 1. Clone Repository
 
 ```bash
-https://github.com/aalfath7/test_app.git
-cd test_app
+https://github.com/aalfath7/schoola.git
+cd schoola
 ```
 
 ### 2. Persiapan Basis Data
